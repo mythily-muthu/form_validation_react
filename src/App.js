@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
+import { useForm } from "react-hook-form";
 
 function App()
 
@@ -48,20 +49,32 @@ let validate = (values) => {
 
   if (!values.username) {
     errors.username = "Username is required";
-  }
-  if (!values.email) {
-    errors.email = "Email is required";
+  } else if (!regex.test(values.username)) {
+    errors.username = "Username is required";
   }
 
-  if (!value.password) {
+  if (!values.email) {
+    errors.email = "Email is required";
+  } else if (!regex.test(values.email)) {
+    errors.email = "This is not a valid email format!";
+  }
+
+  if (!values.password) {
     errors.password = "Password is required";
+  } else if (!regex.test(values.password.length < 4)) {
+    errors.password = "Password must be more than 4 characters";
+  }
+  else if (!regex.test(values.password.length > 10)) {
+    errors.password = "Password cannot exceed more than 10 characters";
   }
   return errors;
 };
 
 return (
   <div className="container">
-
+    (Object.keys(formErrors).length === 0 && isSubmit ? (
+    <div className='ui message success'>Signed in successfully! </div>
+    )
     <form onSubmit={handleSubmit}>
 
       <h1>Login Form</h1>

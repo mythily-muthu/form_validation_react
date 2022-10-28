@@ -29,7 +29,7 @@ let handleSubmit = (e) => {
     username: "",
     email: "",
     password: ""
-  };
+  });
   setformErrors(validate(formValues));
   setisSubmit(true);
 
@@ -117,7 +117,7 @@ return (
       </div>
     </form>
   </div>
-);
-}
+)
+
 
 export default App;

@@ -88,7 +88,7 @@ return (
           <input
             type="text"
             name="username"
-            placeholder='Username'
+            placeholder='Username..'
             value={formValues.username}
             onChange={(e) => {
               setformValues({ ...formValues, username: e.target.value })
